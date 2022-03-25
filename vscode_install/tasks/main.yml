@@ -1,0 +1,15 @@
+---
+
+# tasks file for vscode_install
+- name: Install the vscode repo
+  ansible.builtin.template:
+    src: yum.repos.d.vscode.repo.j2
+    dest: /etc/yum.repos.d/vscode.repo
+    owner: root
+    group: wheel
+    mode: '0644'
+
+- name: Install the latest version of VSCode
+  dnf:
+    name: code
+    state: latest
